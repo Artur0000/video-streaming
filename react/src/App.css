@@ -1,0 +1,12 @@
+@import '~antd/dist/antd.css';
+
+.App {
+    padding: 10px 20px;
+    width: 100vw;
+    height: 100vh;
+    color:blanchedalmond;
+}
+
+h1,h2 {
+    color: rgb(252, 235, 211);
+}

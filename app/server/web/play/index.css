@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    padding: 0;
+    background-image: url("/assets/background.webp");
+}
+
+video {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
