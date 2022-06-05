@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run clear && babel web -d  web/lib",
     "clear": "rm -rf web/lib",
-    "start": "node ./index.js localhost:80",
+    "start": "npm run build && node ./index.js localhost:80",
     "dev": "nodemon ./index.js localhost:80",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
