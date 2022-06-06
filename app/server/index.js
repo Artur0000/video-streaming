@@ -12,7 +12,8 @@ app.get("/video/names", function (req, res) {
     if (!error) {
       const resultArray = result
         .split("\n")
-        .map((videoName) => videoName.split("/")[1]);
+        .map((videoName) => videoName.split(`${config.sourcePath}/`)[1])
+        .filter((file) => file !== ".DS_Store");
       res.status(200).send(resultArray.slice(0, resultArray.length - 1));
       return;
     }

@@ -70,16 +70,33 @@ const startStreaming = () =>
 
 const stopStreaming = () =>
   new Promise((resolve, reject) => {
-    nodeServerPids.forEach((pid, index) => {
-      exec(`taskkill /pid ${pid} /F`, (error) => {
+    if (process.platform !== "darwin") {
+      nodeServerPids.forEach((pid, index) => {
+        exec(`taskkill /pid ${pid} /F`, (error) => {
+          if (error) {
+            reject(error);
+          }
+          if (index === nodeServerPids.length - 1) {
+            resolve();
+          }
+        });
+      });
+    } else {
+      exec("ps -ax | grep './index.js'", (error, result) => {
         if (error) {
           reject(error);
         }
-        if (index === nodeServerPids.length - 1) {
-          resolve();
-        }
+        const pid = Number(result.split("\n")[1].split(" ")[0]);
+
+        exec(`kill ${pid}`, (error) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve();
+          }
+        });
       });
-    });
+    }
   });
 
 const getIp = () => getLocalIp();

@@ -5,7 +5,7 @@
   "description": "My Electron application description",
   "main": "src/index.js",
   "scripts": {
-    "start": "concurrently \"cd ../react && npm start\" \"wait-on tcp:3000 && set ELECTRON_DEV=1 && electron-forge start\"",
+    "start": "concurrently \"cd ../react && npm start\" \"wait-on tcp:3000 && cross-env ELECTRON_DEV=1 electron-forge start\"",
     "package": "electron-forge package",
     "make": "rm -rf ./build && cd ../react && npm run build && mv ./build ../app && cd ../app && electron-forge make",
     "publish": "electron-forge publish",
@@ -53,6 +53,7 @@
     "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
     "@electron-forge/maker-zip": "^6.0.0-beta.63",
     "concurrently": "^7.2.1",
+    "cross-env": "^7.0.3",
     "electron": "19.0.3",
     "wait-on": "^6.0.1"
   }
