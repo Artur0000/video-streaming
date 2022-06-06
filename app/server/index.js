@@ -5,7 +5,9 @@ const config = require("./config.json");
 const app = express();
 
 app.use(express.static(path.join(__dirname, "web")));
-app.use(express.static(config.sourcePath));
+if (config.sourcePath) {
+  app.use(express.static(config.sourcePath));
+}
 
 app.get("/video/names", function (req, res) {
   exec(`find '${config.sourcePath}' -maxdepth 1 -type f`, (error, result) => {
@@ -13,7 +15,7 @@ app.get("/video/names", function (req, res) {
       const resultArray = result
         .split("\n")
         .map((videoName) => videoName.split(`${config.sourcePath}/`)[1])
-        .filter((file) => file !== ".DS_Store");
+        .filter((file) => file !== ".DS_Store" && file !== "desktop.ini");
       res.status(200).send(resultArray.slice(0, resultArray.length - 1));
       return;
     }

@@ -11,8 +11,17 @@ const {
   getIp,
 } = require("./eventHandlers");
 
-if (process.platform === "darwin") {
-  fixPath();
+const isDevelopment = Number(process.env.ELECTRON_DEV);
+
+if (!isDevelopment) {
+  if (process.platform === "darwin") {
+    fixPath();
+  } else {
+    process.env.PATH = [
+      "C:\\Program Files\\Git\\usr\\bin",
+      ...process.env.PATH.split(";"),
+    ].join(";");
+  }
 }
 
 if (require("electron-squirrel-startup")) {
@@ -36,7 +45,7 @@ const createWindow = () => {
   ipcMain.handle("stopStreaming", stopStreaming);
   ipcMain.handle("getLocalIp", getIp);
 
-  if (Number(process.env.ELECTRON_DEV)) {
+  if (isDevelopment) {
     mainWindow.loadURL("http://localhost:3000");
   } else {
     mainWindow.loadFile(path.join(__dirname, "../", "build", "index.html"));

@@ -14,8 +14,9 @@ export const Welcome = () => {
         <h2>Requirnments</h2>
         <span className={styles.description}>
           {config.appName} requires to have{" "}
-          <Link href="https://nodejs.org/en/">NodeJS</Link> installed before
-          using.
+          <Link href="https://nodejs.org/en/">NodeJS</Link>, and{" "}
+          <Link href="https://git-scm.com/download/win">Git</Link> (for Windows)
+          installed before using.
         </span>
       </div>
     </div>

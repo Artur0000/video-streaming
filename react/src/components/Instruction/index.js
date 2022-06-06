@@ -19,7 +19,9 @@ export const Instruction = () => {
       <ol>
         <li>
           Be sure you have installed{" "}
-          <Link href="https://nodejs.org/en/">NodeJS</Link>.
+          <Link href="https://nodejs.org/en/">NodeJS</Link>, and{" "}
+          <Link href="https://git-scm.com/download/win">Git</Link> (for
+          Windows).
         </li>
         <li>Select directory where videos are located.</li>
         <li>

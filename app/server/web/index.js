@@ -4,16 +4,28 @@ const getVideoNames = async () => {
 };
 
 const drawVideoNames = async () => {
-  const names = await getVideoNames();
-  const videoList = document.getElementById("videos-list");
-  names.forEach((name, index) => {
-    let videoItem = document.getElementById("video-item");
-    if (index > 0) {
-      videoItem = videoItem.cloneNode();
+  const emptyFolder = document.getElementById("empty-folder");
+  try {
+    const names = await getVideoNames();
+    const videoList = document.getElementById("videos-list");
+
+    if (names.length) {
+      videoList.style.display = "flex";
+    } else {
+      emptyFolder.style.display = "inline";
     }
-    videoItem.innerHTML = `<button onclick="onVideoClick(this)">${name}</button>`;
-    videoList.appendChild(videoItem);
-  });
+
+    names.forEach((name, index) => {
+      let videoItem = document.getElementById("video-item");
+      if (index > 0) {
+        videoItem = videoItem.cloneNode();
+      }
+      videoItem.innerHTML = `<button onclick="onVideoClick(this)">${name}</button>`;
+      videoList.appendChild(videoItem);
+    });
+  } catch {
+    emptyFolder.style.display = "inline";
+  }
 };
 
 const onVideoClick = ({ textContent }) =>
