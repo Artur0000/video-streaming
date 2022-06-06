@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
+const fixPath = require("fix-path");
 
 const {
   selectedAndSetDirectory,
@@ -9,6 +10,10 @@ const {
   stopStreaming,
   getIp,
 } = require("./eventHandlers");
+
+if (process.platform === "darwin") {
+  fixPath();
+}
 
 if (require("electron-squirrel-startup")) {
   // eslint-disable-line global-require

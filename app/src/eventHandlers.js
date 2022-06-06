@@ -49,7 +49,7 @@ let nodeServerPids;
 const startStreaming = () =>
   new Promise(async (resolve, reject) => {
     const pidsBeforeStart = await getCurrentNodeProcesses();
-    child = exec(
+    const child = exec(
       `cd ${path.join(__dirname, "../server")} && npm start`,
       (error) => {
         if (error) {
@@ -86,7 +86,14 @@ const stopStreaming = () =>
         if (error) {
           reject(error);
         }
-        const pid = Number(result.split("\n")[1].split(" ")[0]);
+
+        const pid = Number(
+          result
+            .split("\n")
+            .find((item) => item.split(" ").find((i) => i === "node"))
+            .split(" ")
+            .filter((item) => item)[0]
+        );
 
         exec(`kill ${pid}`, (error) => {
           if (error) {

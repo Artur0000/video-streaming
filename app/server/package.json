@@ -6,8 +6,9 @@
   "scripts": {
     "build": "npm run clear && babel web -d  web/lib",
     "clear": "rm -rf web/lib",
-    "start": "npm run build && node ./index.js localhost:80",
+    "start": "node ./index.js localhost:80",
     "dev": "nodemon ./index.js localhost:80",
+    "bootstrap": "rm -rf node_modules && npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Arthur",

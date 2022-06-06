@@ -17,6 +17,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "bootstrap": "rm -rf node_modules && npm install",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

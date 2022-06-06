@@ -7,8 +7,10 @@
   "scripts": {
     "start": "concurrently \"cd ../react && npm start\" \"wait-on tcp:3000 && cross-env ELECTRON_DEV=1 electron-forge start\"",
     "package": "electron-forge package",
-    "make": "rm -rf ./build && cd ../react && npm run build && mv ./build ../app && cd ../app && electron-forge make",
+    "make": "rm -rf ./build && cd ../react && npm run build && mv ./build ../app && cd ../app/server && npm run build && cd ../ && electron-forge make",
     "publish": "electron-forge publish",
+    "bootstrap": "rm -rf node_modules && npm install",
+    "bootstrap-all": "npm run bootstrap && cd ../react && npm run bootstrap && cd ../app/server && npm run bootstrap",
     "lint": "echo \"No linting configured\""
   },
   "keywords": [],
@@ -44,7 +46,8 @@
     }
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "fix-path": "^3.0.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.63",
