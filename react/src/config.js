@@ -1,5 +1,5 @@
 const config = {
-  appName: "VideoStreaming",
+  appName: "Video streaming",
 };
 
 export default config;
