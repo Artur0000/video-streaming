@@ -50,7 +50,7 @@ const startStreaming = () =>
   new Promise(async (resolve, reject) => {
     const pidsBeforeStart = await getCurrentNodeProcesses();
     const child = exec(
-      `cd ${path.join(__dirname, "../server")} && npm start`,
+      `cd '${path.join(__dirname, "../server")}' && npm start`,
       (error) => {
         if (error) {
           reject(error);
