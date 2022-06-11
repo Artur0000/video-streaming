@@ -52,7 +52,7 @@ const startStreaming = () =>
     const serverPath = path.join(__dirname, "../server");
     const child = exec(
       `cd ${
-        process.env.platform === "darvin" ? `'${serverPath}'` : serverPath
+        process.platform === "darwin" ? `'${serverPath}'` : serverPath
       } && npm start`,
       (error) => {
         if (error) {
