@@ -10,13 +10,3 @@
 .description {
     font-size: 17px;
 }
-
-.requirnments {
-    margin-top: 8px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgb(198, 198, 198);
-}
-
-.requirnments>h2{
-    margin: 0;
-}

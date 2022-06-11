@@ -3,6 +3,7 @@ import { Welcome } from "components/Welcome";
 import { ChooseVideoDirectory } from "components/ChooseVideoDirectory";
 import { StreamController } from "components/StreamController";
 import { Instruction } from "components/Instruction";
+import { AboutUs } from "components/AboutUs";
 
 import "./App.css";
 
@@ -18,6 +19,7 @@ function App() {
         <ChooseVideoDirectory />
         <StreamController />
         <Instruction />
+        <AboutUs />
       </div>
     </StreamingContext.Provider>
   );

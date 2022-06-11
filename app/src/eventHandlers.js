@@ -49,8 +49,11 @@ let nodeServerPids;
 const startStreaming = () =>
   new Promise(async (resolve, reject) => {
     const pidsBeforeStart = await getCurrentNodeProcesses();
+    const serverPath = path.join(__dirname, "../server");
     const child = exec(
-      `cd '${path.join(__dirname, "../server")}' && npm start`,
+      `cd ${
+        process.env.platform === "darvin" ? `'${serverPath}'` : serverPath
+      } && npm start`,
       (error) => {
         if (error) {
           reject(error);
